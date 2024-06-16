@@ -40,7 +40,7 @@ public function create() {
 
 public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-                 'qty_masuk' => 'required|integer',
+                 'qty_masuk' => 'required|integer|min:1',
             'barang_id' => 'required|exists:barang,id',
         ]);
              if ($validator->fails()) {
@@ -53,7 +53,7 @@ public function store(Request $request) {
             'qty_masuk'  => $request->qty_masuk,
             'barang_id'  => $request->barang_id
         ]);
-             return redirect()->route('barangmasuk.index')->with(['success' => 'Data Pemasukan Barang Berhasil Disimpan!']);
+             return redirect()->route('barangmasuk.index')->with(['Success' => 'Data Pemasukan Barang Berhasil Disimpan!']);
     }
 
     public function edit(string $id) {
@@ -73,7 +73,7 @@ public function store(Request $request) {
             'qty_masuk'  => $request->qty_masuk,
             'barang_id'   => $request->barang_id
         ]);
-             return redirect()->route('barangmasuk.index')->with(['success' => 'Data Pengeluaran Barang Berhasil Diubah!']);
+             return redirect()->route('barangmasuk.index')->with(['Success' => 'Data Pengeluaran Barang Berhasil Diubah!']);
     }
 
 public function destroy(string $id) {
@@ -87,7 +87,7 @@ public function destroy(string $id) {
 
     $datamasuk->delete();
 
-    return redirect()->route('barangmasuk.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    return redirect()->route('barangmasuk.index')->with(['Success' => 'Data Berhasil Dihapus!']);
 
 }
 

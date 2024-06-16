@@ -95,7 +95,7 @@ public function update(Request $request, string $id) {
        'spesifikasi'   => $request->spesifikasi,
        'kategori_id'   => $request->kategori_id
    ]);
-   return redirect()->route('barang.index')->with(['success' => 'Data Barang Berhasil Diubah!']);
+   return redirect()->route('barang.index')->with(['Success' => 'Data Barang Berhasil Diubah!']);
 }
 
 public function destroy(string $id) {
@@ -105,7 +105,7 @@ public function destroy(string $id) {
     }
 
 	if (DB::table('barangmasuk','barangkeluar')->where('barang_id', $id)->exists()) {
-     		return redirect()->route('barang.index')->with(['Gagal' => 'Data barang gagal dihapus! Data barang masih digunakan oleh produk']);
+     		return redirect()->route('barang.index')->with(['error' => 'Data barang gagal dihapus! Data barang masih digunakan oleh produk']);
 	}
      	else {
      		$idkat = Barang::find($id);

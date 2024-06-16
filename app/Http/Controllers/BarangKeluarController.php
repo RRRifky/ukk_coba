@@ -34,7 +34,7 @@ public function index(Request $request) {
     public function store(Request $request) {
         // Validasi input
         $validator = Validator::make($request->all(), [
-            'qty_keluar' => 'required|integer',
+            'qty_keluar' => 'required|integer|min:1',
             'barang_id' => 'required|exists:barang,id',
         ]);
     
